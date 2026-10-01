@@ -1,4 +1,4 @@
-import { GameState, Recipe, ShoppingOrder } from "./types";
+import { GameState, Recipe, ShoppingOrder, WeatherCondition } from "./types";
 
 
 export const state: GameState = {
@@ -43,5 +43,27 @@ export function buyIngredients(state: GameState, order: ShoppingOrder): boolean 
     state.sugar += order.sugar;
 
     return true;    // successful purchase
+}
+
+export function maxCupsPossible(state: GameState): number {
+    const fromLemons = Math.floor(state.lemons / RECIPE.lemons);
+    const fromSugar = Math.floor(state.sugar / RECIPE.sugar);
+    const fromIce = Math.floor(state.ice / RECIPE.ice);
+    const fromCups = Math.floor(state.cups / RECIPE.cups);
+
+    return Math.min(fromLemons, fromSugar, fromIce, fromCups);
+}
+
+export function cupsSold(maxCups: number, weather:WeatherCondition): number {
+    switch (weather) {
+        case 'hot':
+            return maxCups;
+        case 'sunny':
+            return Math.ceil(maxCups/2);
+        case 'cloudy':
+            return Math.floor(maxCups/3);
+        default:
+            return 0;
+    }
 }
 

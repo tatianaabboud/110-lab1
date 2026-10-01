@@ -21,3 +21,5 @@ export interface ShoppingOrder {
     lemons: number;
     sugar: number;
 }
+
+export type WeatherCondition = 'hot' | 'sunny' | 'cloudy';
