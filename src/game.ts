@@ -62,6 +62,8 @@ export function cupsSold(maxCups: number, weather:WeatherCondition): number {
             return Math.ceil(maxCups/2);
         case 'cloudy':
             return Math.floor(maxCups/3);
+        case 'rainy':
+            return 0;
         default:
             return 0;
     }
