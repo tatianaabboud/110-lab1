@@ -6,6 +6,7 @@ async function main() {
 
     console.log("Welcome to your Lemonade Stand simulation!");
     console.log(`You have $${state.money.toFixed(2)}.`);
+    console.log(`The weather today is ${weather}.`);
     console.log("Today's ingredient prices:");
     console.log(`  Cups:   $${PRICES.cups.toFixed(2)} each`);
     console.log(`  Ice:    $${PRICES.ice.toFixed(2)} each`);
@@ -27,6 +28,9 @@ async function main() {
     if (success) {
         console.log(`Purchase successful! You have $${state.money.toFixed(2)} left.`);
         console.log(`With your ingredients, you can make ${maxCupsPossible(state)} cup(s) of lemonade.`);
+        const sold = sellLemonade(state, maxCups, weather);
+        console.log(`Because it is ${weather}, you made ${maxCups} cup(s), and sold ${sold} of them.`);
+        console.log(`You now have $${state.money.toFixed(2)}.`);
     } else {
         console.log(`Sorry, you don't have enough money for that order.`);
     }
