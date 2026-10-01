@@ -45,3 +45,11 @@ export function buyIngredients(state: GameState, order: ShoppingOrder): boolean 
     return true;    // successful purchase
 }
 
+export function maxCupsPossible(state: GameState): number {
+    const fromLemons = Math.floor(state.lemons / RECIPE.lemons);
+    const fromSugar = Math.floor(state.sugar / RECIPE.sugar);
+    const fromIce = Math.floor(state.ice / RECIPE.ice);
+    const fromCups = Math.floor(state.cups / RECIPE.cups);
+
+    return Math.min(fromLemons, fromSugar, fromIce, fromCups);
+}
