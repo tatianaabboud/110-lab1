@@ -22,4 +22,4 @@ export interface ShoppingOrder {
     sugar: number;
 }
 
-export type WeatherCondition = 'hot' | 'sunny' | 'cloudy';
+export type WeatherCondition = 'hot' | 'sunny' | 'cloudy' | 'rainy';
