@@ -59,9 +59,11 @@ export function cupsSold(maxCups: number, weather:WeatherCondition): number {
         case 'hot':
             return maxCups;
         case 'sunny':
-            return Math.floor(maxCups/2);
+            return Math.ceil(maxCups/2);
         case 'cloudy':
             return Math.floor(maxCups/3);
+        default:
+            return 0;
     }
 }
 
